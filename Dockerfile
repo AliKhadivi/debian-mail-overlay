@@ -26,6 +26,7 @@ RUN NB_CORES=${BUILD_CORES-$(getconf _NPROCESSORS_CONF)} \
     && BUILD_DEPS=" \
     cmake \
     gcc \
+    g++ \
     make \
     ragel \
     wget \
@@ -37,6 +38,7 @@ RUN NB_CORES=${BUILD_CORES-$(getconf _NPROCESSORS_CONF)} \
     libsqlite3-dev \
     libicu-dev \
     libssl-dev \
+    libsodium-dev \
     libhyperscan-dev \
     libjemalloc-dev \
     libmagic-dev" \
