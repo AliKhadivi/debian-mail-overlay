@@ -42,7 +42,7 @@ RUN NB_CORES=${BUILD_CORES-$(getconf _NPROCESSORS_CONF)} \
     libmagic-dev" \
  && apt-get update && apt-get install -y -q --no-install-recommends \
     ${BUILD_DEPS} \
-    libevent-2.1-6 \
+    libevent-2.1-7 \
     libglib2.0-0 \
     libssl1.1 \
     libmagic1 \
