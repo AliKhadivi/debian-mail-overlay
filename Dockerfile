@@ -1,13 +1,13 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG BUILD_CORES
 
-ARG SKALIBS_VER=2.8.1.0
-ARG EXECLINE_VER=2.5.1.0
-ARG S6_VER=2.8.0.1
-ARG RSPAMD_VER=1.9.4
-ARG GUCCI_VER=0.1.0
+ARG SKALIBS_VER=2.12.0.1
+ARG EXECLINE_VER=2.9.0.1
+ARG S6_VER=2.11.1.2
+ARG RSPAMD_VER=3.2
+ARG GUCCI_VER=1.5.5
 
 ARG SKALIBS_SHA256_HASH="431c6507b4a0f539b6463b4381b9b9153c86ad75fa3c6bfc9dc4722f00b166ba"
 ARG EXECLINE_SHA256_HASH="b1a756842947488404db8173bbae179d6e78b6ef551ec683acca540ecaf22677"
@@ -83,7 +83,7 @@ RUN NB_CORES=${BUILD_CORES-$(getconf _NPROCESSORS_CONF)} \
  && make && make install \
  && cd /tmp \
  && RSPAMD_TARBALL="${RSPAMD_VER}.tar.gz" \
- && wget -q https://github.com/vstakhov/rspamd/archive/${RSPAMD_TARBALL} \
+ && wget -q https://github.com/rspamd/rspamd/archive/refs/tags/${RSPAMD_TARBALL} \
  && CHECKSUM=$(sha256sum ${RSPAMD_TARBALL} | awk '{print $1}') \
  && if [ "${CHECKSUM}" != "${RSPAMD_SHA256_HASH}" ]; then echo "${RSPAMD_TARBALL} : bad checksum" && exit 1; fi \
  && tar xzf ${RSPAMD_TARBALL} && cd rspamd-${RSPAMD_VER} \
